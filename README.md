@@ -1,12 +1,12 @@
-# An�lisis de Complejidad y Limitaciones del Arreglo
+# Analisis de Complejidad y Limitaciones del Arreglo
 
-Cat�logo de libros implementado con un arreglo de tama�o fijo (capacidad de **20 libros**) y un contador `cantidad` que indica cu�ntas posiciones est�n realmente ocupadas. Sea **n** la cantidad de libros registrados.
+Catalogo de libros implementado con un arreglo de tamaño fijo (capacidad de **20 libros**) y un contador `cantidad` que indica cuantas posiciones estan realmente ocupadas. Sea **n** la cantidad de libros registrados.
 
-## 1. An�lisis de complejidad Big O
+## 1. Analisis de complejidad Big O
 
 ### Resumen
 
-| Operaci�n | Mejor caso | Caso promedio | Peor caso |
+| Operacion | Mejor caso | Caso promedio | Peor caso |
 |---|---|---|---|
 | Agregar | O(1) | O(1) | O(n)* |
 | Listar | O(n) | O(n) | O(n) |
@@ -14,11 +14,11 @@ Cat�logo de libros implementado con un arreglo de tama�o fijo (capacidad de 
 | Actualizar | O(1) | O(n) | O(n) |
 | Eliminar | O(1) | O(n) | O(n) |
 
-\* Con un arreglo de tama�o fijo, agregar es O(1) mientras haya espacio. El O(n) aparece si se valida que el ID no est� repetido, o si se redimensiona el arreglo (ver secci�n 2).
+\* Con un arreglo de tamaño fijo, agregar es O(1) mientras haya espacio. El O(n) aparece si se valida que el ID no esta repetido, o si se redimensiona el arreglo.
 
 ### Agregar
 
-Se escribe el libro directamente en la posici�n `libros[cantidad]` y se incrementa el contador. Es un acceso directo por �ndice, por lo que la complejidad es **O(1)**. Si adem�s se valida que el ID no exista, se suma una b�squeda lineal y el total pasa a **O(n)**.
+Se escribe el libro directamente en la posicion `libros[cantidad]` y se incrementa el contador. Es un acceso directo por indice, por lo que la complejidad es **O(1)**. Si ademas se valida que el ID no exista, se suma una b�squeda lineal y el total pasa a **O(n)**.
 
 ### Listar
 

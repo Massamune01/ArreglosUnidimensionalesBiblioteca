@@ -8,7 +8,7 @@
             bool run = true;
             while (run)
             {
-
+                Console.Clear();
                 Console.WriteLine("====== SISTEMA DE BIBLIOTECA ======");
                 Console.WriteLine(""""
                     1. Agregar libro
@@ -16,6 +16,7 @@
                     3. Buscar libro por ID
                     4. Actualizar libro
                     5. Eliminar libro
+                    6. «Buscar libro por ID (binaria)
                     0. Salir
                 
                     """");
@@ -41,6 +42,32 @@
                         break;
                     case 5:
                         controller.EliminarLibro();
+                        break;
+                    case 6:
+
+                        Biblioteca biblioteca = new Biblioteca();
+
+                        Console.WriteLine("Ingrese el ID del libro a buscar:");
+                        int id = Convert.ToInt32(Console.ReadLine());
+
+                        int? busqueda =  controller.BinarySearchById(Biblioteca.books, biblioteca.count, id);
+
+                        int busquedaIndex = busqueda ?? -1; // Convierte el tipo de dato int? a int, asignando -1 si es null
+
+                        if (busqueda == null)
+                        {
+                            Console.WriteLine("No se encontro ningun libro");
+                        }
+
+
+                        if(busquedaIndex != -1)
+                        { 
+                            Book libro = Biblioteca.books[busquedaIndex];
+                            Console.WriteLine(libro.ToString());
+                        }
+
+                        Console.WriteLine("Presione Enter para continuar...");
+                        Console.ReadLine();
                         break;
                     case 0:
                         Console.WriteLine("Saliendo del sistema...");

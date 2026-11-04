@@ -77,6 +77,7 @@
                     case 7:
                         controller.BubbleSortByTitulo();
                         controller.ListarLibros();
+                        controller.BubbleSortByTitulo();
                         Console.WriteLine("***Completado*** PRESIONE ENTER PARA CONTINUAR");
                         Console.ReadLine();
                         break;

@@ -30,10 +30,15 @@
 
         public void ListarLibros()
         {
-            Console.Clear();
             biblioteca.ListarLibros();
             Console.WriteLine("PRESIONE ENTER PARA CONTINUAR");
             Console.ReadLine();
+        }
+
+        public void ListarLibrosDesordenados()
+        {
+            Console.WriteLine("\nDesordenada:");
+            biblioteca.ListarLibrosDesordenada();
         }
 
         public void BuscarLibroPorId(int? busqueda = null)

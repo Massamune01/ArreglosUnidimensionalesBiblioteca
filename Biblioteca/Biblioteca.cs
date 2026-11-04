@@ -5,6 +5,7 @@ namespace Biblioteca
     public class Biblioteca
     {
         public static Book[] books { get; set; } = new Book[20];
+        public static Book[] Fbooks { get; set; } = null;
         public int count { get; set; } = 0;
 
         public Biblioteca()
@@ -20,6 +21,8 @@ namespace Biblioteca
             books[8] = new Book(90, "Crónica de una muerte anunciada");
             books[9] = new Book(100, "El túnel");
             count = 10;
+
+            Fbooks = (Book[])(books.Clone());
         }
 
         public bool AgregarLibro(Book libro) // O(1)
@@ -68,42 +71,35 @@ namespace Biblioteca
             Console.WriteLine($"Intercambios: {intercambios}");
         }
 
-/// <summary>
-/// Ordena los libros de menor a mayor usando su ID.
-/// </summary>
-public void BubbleSortById()
-{
-    int comparaciones = 0;
-    int intercambios = 0;
-
-    // La parte final del arreglo queda ordenada en cada iteración.
-    for (int i = 0; i < count - 1; i++)
-    {
-        // Se comparan los elementos vecinos.
-        for (int j = 0; j < count - i - 1; j++)
+        public void BubbleSortById()
         {
-            comparaciones++;
+            int comparaciones = 0;
+            int intercambios = 0;
 
-            // Si el ID izquierdo es mayor, los libros están en orden incorrecto.
-            if (books[j].Id > books[j + 1].Id)
+            for (int i = 0; i < count - 1; i++)
             {
-                Book temporal = books[j];
-                books[j] = books[j + 1];
-                books[j + 1] = temporal;
+                for (int j = 0; j < count - i - 1; j++)
+                {
+                    comparaciones++;
 
-                intercambios++;
+                    if (books[j].Id > books[j + 1].Id)
+                    {
+                        Book temporal = books[j];
+                        books[j] = books[j + 1];
+                        books[j + 1] = temporal;
+
+                        intercambios++;
+                    }
+                }
+
+                Console.WriteLine($"Iteración {i + 1}:");
+                ListarLibros();
+                Console.WriteLine();
             }
+
+            Console.WriteLine($"Comparaciones: {comparaciones}");
+            Console.WriteLine($"Intercambios: {intercambios}");
         }
-
-        // Muestra el estado del arreglo después de la iteración.
-        Console.WriteLine($"Iteración {i + 1}:");
-        ListarLibros();
-        Console.WriteLine();
-    }
-
-    Console.WriteLine($"Comparaciones: {comparaciones}");
-    Console.WriteLine($"Intercambios: {intercambios}");
-}
 
         public void ListarLibros() // O(n)
         {
@@ -113,6 +109,16 @@ public void BubbleSortById()
                 Console.WriteLine(books[i].ToString());
             }
         }
+
+        public void ListarLibrosDesordenada() // O(n)
+        {
+            Console.WriteLine("Libros desordenados:");
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(books[i].ToString());
+            }
+        }
+
         public Book BuscarPorId(int? id) // O(n)
         {
             int i = BuscarIndice(id);

@@ -3,6 +3,8 @@
     public class controller
     {
         Biblioteca biblioteca = new Biblioteca();
+        Ejercicio2 inventario = new Ejercicio2();
+        Ejercicio3 carrera = new Ejercicio3();
         public void AgregarLibro()
         {
             try
@@ -30,6 +32,8 @@
         {
             Console.Clear();
             biblioteca.ListarLibros();
+            Console.WriteLine("PRESIONE ENTER PARA CONTINUAR");
+            Console.ReadLine();
         }
 
         public void BuscarLibroPorId(int? busqueda = null)
@@ -91,6 +95,18 @@
             {
                 Console.WriteLine("Libro no encontrado.");
             }
+        }
+
+        public void BubbleSortByTitulo()
+        {
+            biblioteca.BubbleSortByTitulo();
+            Console.WriteLine("Libros ordenados por título con éxito.");
+        }   
+
+        public void BubbleSortById()
+        {
+            biblioteca.BubbleSortById();
+            Console.WriteLine("Libros ordenados por id con éxito.");
         }
 
         public int? BinarySearchById(Book[] books, int count, int id)
@@ -157,6 +173,30 @@
 
             Console.WriteLine("Comparaciones: " + cantidadcomparaciones);
             return null;
+        }
+
+        // Ejercio 2: Usando SelectionSort para ordenar productos por precio
+        public void SelectionSortByPrice()
+        {
+            inventario.SelectionSort(Ejercicio2.productos);
+            inventario.ListarProductos();
+            Console.WriteLine("\nDesordenada:");
+            inventario.ListarProductosDesordenada();
+            Console.WriteLine("Productos ordenados por precio con éxito.");
+            Console.WriteLine("***Completado*** PRESIONE ENTER PARA CONTINUAR");
+            Console.ReadLine();
+        }
+
+        // Ejercicio 3: Usando InsertionSort para ordenar productos por precio
+        public void InsertionSortByLlegada()
+        {
+            carrera.InsertionSortByLlegada();
+            carrera.ListarCorredores();
+            Console.WriteLine("\nDesordenada:");
+            carrera.ListarCorredoresDesordenada();
+            Console.WriteLine("Corredores ordenados por llegada con éxito.");
+            Console.WriteLine("***Completado*** PRESIONE ENTER PARA CONTINUAR");
+            Console.ReadLine();
         }
 
         private bool validateInput(Book[] books, int count, int id)
